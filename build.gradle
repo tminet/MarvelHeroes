@@ -1,0 +1,32 @@
+buildscript {
+    ext {
+        lifecycle_ver = '2.4.0'
+        navigation_ver = '2.3.5'
+        hilt_ver = '2.40.5'
+        room_ver = '2.3.0'
+        retrofit_ver = '2.9.0'
+        glide_ver = '4.12.0'
+        paging_ver = '3.0.1'
+        detekt_ver = '1.18.0'
+    }
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0'
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_ver"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_ver"
+    }
+}
+
+plugins {
+    id('io.gitlab.arturbosch.detekt').version("$detekt_ver")
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
