@@ -17,7 +17,7 @@ import tmidev.marvelheroes.framework.remote.retrofit.RetrofitCharactersDataSourc
 interface DataModule {
     @Binds
     fun bindRemoteCharactersDataSource(
-        datasource: RetrofitCharactersDataSource
+        dataSource: RetrofitCharactersDataSource
     ): RemoteCharactersDataSource<DataWrapperResponse>
 
     @Binds
