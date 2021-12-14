@@ -9,4 +9,9 @@
     <string name="menuFavorites">Favorites</string>
     <string name="menuAbout">About</string>
 
+    <string name="tryAgain">Try again</string>
+
+    <string name="errorLoadCharacters">An error occurred when loading Heroes</string>
+    <string name="errorLoadMoreCharactersRetry">An error occurred when loading more Heroes. Tap to Retry</string>
+
 </resources>
