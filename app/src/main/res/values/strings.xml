@@ -1,4 +1,12 @@
 <resources>
     <string name="appName">Marvel Heroes</string>
 
+    <string name="screenTitleHome">Home</string>
+    <string name="screenTitleFavorites">Favorites</string>
+    <string name="screenTitleAbout">About</string>
+
+    <string name="menuHome">Home</string>
+    <string name="menuFavorites">Favorites</string>
+    <string name="menuAbout">About</string>
+
 </resources>
