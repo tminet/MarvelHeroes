@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
 }
 
 apply {
@@ -117,6 +118,9 @@ dependencies {
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
 
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    implementation platform('com.google.firebase:firebase-bom:29.0.2')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     testImplementation project(":testing")
     testImplementation "androidx.room:room-testing:$room_ver"
