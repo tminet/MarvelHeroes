@@ -4,10 +4,10 @@ import androidx.paging.PagingData
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.count
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -44,7 +44,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun `should return one paging data with characters`() = runBlockingTest {
+    fun `should return one paging data with characters`() = runTest {
         whenever(
             getCharactersUseCase.invoke(params = any())
         ).thenReturn(
@@ -53,11 +53,11 @@ class HomeViewModelTest {
 
         val result = homeViewModel.charactersPagingData(query = "")
 
-        Assert.assertEquals(1, result.count())
+        assertNotNull(result.first())
     }
 
     @Test(expected = RuntimeException::class)
-    fun `should throw an exception when use case returns an exception`() = runBlockingTest {
+    fun `should throw an exception when use case returns an exception`() = runTest {
         whenever(
             getCharactersUseCase.invoke(params = any())
         ).thenThrow(

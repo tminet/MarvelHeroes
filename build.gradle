@@ -1,12 +1,13 @@
 buildscript {
     ext {
-        lifecycle_ver = '2.4.0'
-        navigation_ver = '2.3.5'
-        hilt_ver = '2.40.5'
-        room_ver = '2.3.0'
+        coroutines_ver = '1.6.0'
+        lifecycle_ver = '2.4.1'
+        navigation_ver = '2.4.1'
+        hilt_ver = '2.41'
+        room_ver = '2.4.1'
         retrofit_ver = '2.9.0'
-        glide_ver = '4.12.0'
-        paging_ver = '3.0.1'
+        glide_ver = '4.13.0'
+        paging_ver = '3.1.0'
         detekt_ver = '1.18.0'
     }
 
@@ -16,7 +17,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.android.tools.build:gradle:7.1.1'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_ver"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_ver"
