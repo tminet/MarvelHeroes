@@ -9,6 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import tmidev.marvelheroes.BuildConfig
+import tmidev.marvelheroes.framework.di.qualifier.BaseUrl
 import tmidev.marvelheroes.framework.remote.interceptor.AuthorizationInterceptor
 import tmidev.marvelheroes.framework.remote.retrofit.MarvelApi
 import java.util.*
@@ -52,9 +53,10 @@ object RemoteModule {
     @Provides
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
-        converterFactory: GsonConverterFactory
+        converterFactory: GsonConverterFactory,
+        @BaseUrl baseUrl: String
     ): MarvelApi = Retrofit.Builder()
-        .baseUrl(BuildConfig.BASE_URL)
+        .baseUrl(baseUrl)
         .client(okHttpClient)
         .addConverterFactory(converterFactory)
         .build()
