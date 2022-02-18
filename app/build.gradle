@@ -96,6 +96,8 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.5.0'
 
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_ver"
+
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_ver"
 
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_ver"
@@ -110,7 +112,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_ver"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_ver"
 
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
 
