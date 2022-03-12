@@ -11,7 +11,12 @@
 
     <string name="tryAgain">Try again</string>
 
-    <string name="errorLoadCharacters">An error occurred when loading Heroes</string>
-    <string name="errorLoadMoreCharactersRetry">An error occurred when loading more Heroes. Tap to Retry</string>
+    <string name="errorLoadData">An error occurred when loading data</string>
+    <string name="errorLoadMoreRetry">An error occurred when loading data. Tap to Retry</string>
+
+    <string name="noResultsFound">No results found</string>
+
+    <string name="detailsCategoryComics">Comics</string>
+    <string name="detailsCategoryEvents">Events</string>
 
 </resources>
