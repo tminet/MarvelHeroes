@@ -1,7 +1,6 @@
 package tmidev.core.domain.usecase
 
 import androidx.paging.PagingConfig
-import androidx.paging.PagingSource
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import junit.framework.TestCase
@@ -15,7 +14,6 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 import tmidev.core.data.repository.CharactersRepository
-import tmidev.core.domain.model.Character
 import tmidev.testing.model.CharactersFactory
 import tmidev.testing.paging.PagingSourceFactory
 import tmidev.testing.rule.MainCoroutineRule
@@ -29,7 +27,7 @@ class GetCharactersUseCaseImplTest {
     var mainCoroutineRUle = MainCoroutineRule()
 
     @Mock
-    private lateinit var repository: CharactersRepository<PagingSource<Int, Character>>
+    private lateinit var repository: CharactersRepository
 
     private val character = CharactersFactory().create(CharactersFactory.Character.Character1)
 

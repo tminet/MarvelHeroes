@@ -14,8 +14,7 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 import tmidev.core.data.datasource.RemoteCharactersDataSource
 import tmidev.core.domain.model.Character
-import tmidev.marvelheroes.factory.response.DataWrapperResponseFactory
-import tmidev.marvelheroes.framework.remote.response.DataWrapperResponse
+import tmidev.marvelheroes.factory.response.CharacterPagingFactory
 import tmidev.testing.model.CharactersFactory
 import tmidev.testing.rule.MainCoroutineRule
 
@@ -28,9 +27,9 @@ class CharactersPagingSourceTest {
     var mainCoroutineRUle = MainCoroutineRule()
 
     @Mock
-    private lateinit var remoteDataSource: RemoteCharactersDataSource<DataWrapperResponse>
+    private lateinit var remoteDataSource: RemoteCharactersDataSource
 
-    private val dataWrapperResponseFactory = DataWrapperResponseFactory()
+    private val dataWrapperResponseFactory = CharacterPagingFactory()
     private val charactersFactory = CharactersFactory()
 
     @Before
