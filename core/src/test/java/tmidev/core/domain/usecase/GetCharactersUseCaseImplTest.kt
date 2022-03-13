@@ -6,7 +6,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import junit.framework.TestCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -24,12 +24,12 @@ class GetCharactersUseCaseImplTest {
     private lateinit var getCharactersUseCase: GetCharactersUseCase
 
     @get:Rule
-    var mainCoroutineRUle = MainCoroutineRule()
+    var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
     private lateinit var repository: CharactersRepository
 
-    private val character = CharactersFactory().create(CharactersFactory.Character.Character1)
+    private val character = CharactersFactory().create(CharactersFactory.FakeCharacter.FakeCharacter1)
 
     private val fakePagingSource = PagingSourceFactory().create(listOf(character))
 
@@ -39,7 +39,7 @@ class GetCharactersUseCaseImplTest {
     }
 
     @Test
-    fun `should return a flow paging data with a list of characters`() = runBlockingTest {
+    fun `should return a flow paging data with a list of characters`() = runTest {
         // arrange start
         whenever(
             repository.getCharacters(query = "")

@@ -6,10 +6,10 @@ import tmidev.core.domain.model.Event
 import tmidev.core.domain.usecase.base.ResultStatus
 
 interface GetCharacterCategoriesUseCase {
-    operator fun invoke(params: GetCharacterCategoriesParams):
+    operator fun invoke(params: GetCategoriesParams):
             Flow<ResultStatus<Pair<List<Comic>, List<Event>>>>
 
-    data class GetCharacterCategoriesParams(
+    data class GetCategoriesParams(
         val characterId: Int,
     )
 }

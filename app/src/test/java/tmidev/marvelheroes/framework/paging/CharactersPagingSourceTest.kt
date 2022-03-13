@@ -4,7 +4,7 @@ import androidx.paging.PagingSource
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -38,7 +38,7 @@ class CharactersPagingSourceTest {
     }
 
     @Test
-    fun `should return success load when getCharacters() is called`() = runBlockingTest {
+    fun `should return success load when getCharacters() is called`() = runTest {
         // arrange start
         whenever(
             remoteDataSource.getCharacters(queries = any())
@@ -57,8 +57,8 @@ class CharactersPagingSourceTest {
         )
 
         val charactersList = listOf(
-            charactersFactory.create(CharactersFactory.Character.Character1),
-            charactersFactory.create(CharactersFactory.Character.Character2)
+            charactersFactory.create(CharactersFactory.FakeCharacter.FakeCharacter1),
+            charactersFactory.create(CharactersFactory.FakeCharacter.FakeCharacter2)
         )
         // act end
 
@@ -75,7 +75,7 @@ class CharactersPagingSourceTest {
     }
 
     @Test
-    fun `should return an exception when getCharacters() is called`() = runBlockingTest {
+    fun `should return an exception when getCharacters() is called`() = runTest {
         // arrange start
         val exception = RuntimeException()
 
