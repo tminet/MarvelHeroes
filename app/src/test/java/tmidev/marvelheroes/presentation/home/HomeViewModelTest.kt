@@ -24,7 +24,7 @@ class HomeViewModelTest {
     private lateinit var homeViewModel: HomeViewModel
 
     @get:Rule
-    var mainCoroutineRUle = MainCoroutineRule()
+    var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
     private lateinit var getCharactersUseCase: GetCharactersUseCase
@@ -33,8 +33,8 @@ class HomeViewModelTest {
 
     private val charactersPagingData = PagingData.from(
         data = listOf(
-            charactersFactory.create(CharactersFactory.Character.Character1),
-            charactersFactory.create(CharactersFactory.Character.Character2)
+            charactersFactory.create(CharactersFactory.FakeCharacter.FakeCharacter1),
+            charactersFactory.create(CharactersFactory.FakeCharacter.FakeCharacter2)
         )
     )
 

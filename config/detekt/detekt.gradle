@@ -11,7 +11,7 @@ detekt {
 
     def inputFiles = []
     rootProject.subprojects.each { module ->
-        inputFiles << "$module.projectDir/src/main/java"
+        if (module.name != "testing") inputFiles << "$module.projectDir/src/main/java"
     }
     source = files(inputFiles)
     config = files("$rootDir/config/detekt/detekt.yml")

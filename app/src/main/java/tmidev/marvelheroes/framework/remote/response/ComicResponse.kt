@@ -1,19 +1,16 @@
 package tmidev.marvelheroes.framework.remote.response
 
 import com.google.gson.annotations.SerializedName
-import tmidev.core.domain.model.Character
+import tmidev.core.domain.model.Comic
 
-data class CharacterResponse(
+data class ComicResponse(
     @SerializedName("id")
     val id: Int,
-    @SerializedName("name")
-    val name: String,
     @SerializedName("thumbnail")
     val thumbnail: ThumbnailResponse
 ) {
-    fun toCharacterModel() = Character(
+    fun toComicModel() = Comic(
         id = id,
-        name = name,
         imageUrl = thumbnail.getHttpsUrl()
     )
 }

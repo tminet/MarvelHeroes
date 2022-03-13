@@ -1,7 +1,6 @@
 package tmidev.core.domain.model
 
-data class Character(
+class Event(
     val id: Int,
-    val name: String,
     val imageUrl: String
 )

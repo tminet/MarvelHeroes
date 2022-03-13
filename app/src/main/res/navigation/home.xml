@@ -9,6 +9,23 @@
         android:id="@+id/homeFragment"
         android:name="tmidev.marvelheroes.presentation.home.HomeFragment"
         android:label="@string/screenTitleHome"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/toDetailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="tmidev.marvelheroes.presentation.detail.DetailFragment"
+        android:label="{screenTitle}"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="screenTitle"
+            app:argType="string" />
+        <argument
+            android:name="detailViewArg"
+            app:argType="tmidev.marvelheroes.presentation.detail.DetailViewArg" />
+    </fragment>
 
 </navigation>

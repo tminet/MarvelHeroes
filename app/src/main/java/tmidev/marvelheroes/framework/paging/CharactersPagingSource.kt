@@ -4,11 +4,10 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import tmidev.core.data.datasource.RemoteCharactersDataSource
 import tmidev.core.domain.model.Character
-import tmidev.marvelheroes.framework.remote.response.DataWrapperResponse
 import javax.inject.Inject
 
 class CharactersPagingSource @Inject constructor(
-    private val remoteDataSource: RemoteCharactersDataSource<DataWrapperResponse>,
+    private val remoteDataSource: RemoteCharactersDataSource,
     private val query: String
 ) : PagingSource<Int, Character>() {
     @Suppress("TooGenericExceptionCaught")
@@ -21,12 +20,12 @@ class CharactersPagingSource @Inject constructor(
 
             if (query.isNotEmpty()) queries["nameStartWith"] = query
 
-            val response = remoteDataSource.getCharacters(queries)
-            val offsetCharacters = response.data.offset
-            val totalCharacters = response.data.total
+            val characterPaging = remoteDataSource.getCharacters(queries)
+            val offsetCharacters = characterPaging.offset
+            val totalCharacters = characterPaging.total
 
             LoadResult.Page(
-                data = response.data.results.map { it.toCharacterModel() },
+                data = characterPaging.characters,
                 prevKey = null,
                 nextKey = if (offsetCharacters < totalCharacters) {
                     offsetCharacters + LIMIT
