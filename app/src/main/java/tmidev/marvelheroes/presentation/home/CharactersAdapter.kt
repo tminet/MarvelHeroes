@@ -4,10 +4,15 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import tmidev.core.domain.model.Character
+import tmidev.marvelheroes.framework.imageloader.ImageLoader
+import tmidev.marvelheroes.util.OnCharacterItemClick
 
-class CharactersAdapter : PagingDataAdapter<Character, CharactersViewHolder>(CharactersDiffUtil()) {
+class CharactersAdapter(
+    private val imageLoader: ImageLoader,
+    private val onItemClick: OnCharacterItemClick
+) : PagingDataAdapter<Character, CharactersViewHolder>(CharactersDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        CharactersViewHolder.create(parent)
+        CharactersViewHolder.create(imageLoader, parent, onItemClick)
 
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
         getItem(position)?.let { character ->

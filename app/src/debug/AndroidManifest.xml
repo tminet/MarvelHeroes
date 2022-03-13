@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:networkSecurityConfig="@xml/newtork_security_config"
+        tools:targetApi="n">
+        <activity
+            android:name="tmidev.marvelheroes.HiltTestActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

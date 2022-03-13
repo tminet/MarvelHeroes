@@ -7,4 +7,9 @@ data class ThumbnailResponse(
     val path: String,
     @SerializedName("extension")
     val extension: String
-)
+) {
+    fun getHttpsUrl() = "${path}.${extension}".replace(
+        oldValue = "http",
+        newValue = "https"
+    )
+}

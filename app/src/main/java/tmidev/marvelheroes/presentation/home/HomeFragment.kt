@@ -10,18 +10,26 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import tmidev.marvelheroes.databinding.FragmentHomeBinding
+import tmidev.marvelheroes.framework.imageloader.ImageLoader
+import tmidev.marvelheroes.presentation.detail.DetailViewArg
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
+
+    @Inject
+    lateinit var imageLoader: ImageLoader
+
     private lateinit var charactersAdapter: CharactersAdapter
 
     override fun onCreateView(
@@ -47,7 +55,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun initCharactersAdapter() {
-        charactersAdapter = CharactersAdapter()
+        charactersAdapter = CharactersAdapter(imageLoader) { character, view ->
+            val extras = FragmentNavigatorExtras(
+                view to character.name
+            )
+            val directions = HomeFragmentDirections.toDetailFragment(
+                character.name,
+                DetailViewArg(character.id, character.name, character.imageUrl)
+            )
+            findNavController().navigate(directions, extras)
+        }
         binding.recyclerViewCharacters.apply {
             setHasFixedSize(true)
             adapter = charactersAdapter.withLoadStateFooter(
@@ -87,6 +104,11 @@ class HomeFragment : Fragment() {
             isVisible = visibility
             if (visibility) startShimmer() else stopShimmer()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

@@ -24,6 +24,6 @@
 
     <include
         android:id="@+id/viewHomeErrorState"
-        layout="@layout/view_home_error_state" />
+        layout="@layout/view_error_state" />
 
 </ViewFlipper>

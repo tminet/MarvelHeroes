@@ -5,17 +5,15 @@ import tmidev.core.domain.model.Character
 
 data class CharacterResponse(
     @SerializedName("id")
-    val id: String,
+    val id: Int,
     @SerializedName("name")
     val name: String,
     @SerializedName("thumbnail")
     val thumbnail: ThumbnailResponse
 ) {
     fun toCharacterModel() = Character(
+        id = id,
         name = name,
-        imageUrl = "${thumbnail.path}.${thumbnail.extension}".replace(
-            oldValue = "http",
-            newValue = "https"
-        )
+        imageUrl = thumbnail.getHttpsUrl()
     )
 }
